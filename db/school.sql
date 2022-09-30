@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 06:42 PM
+-- Generation Time: Sep 30, 2022 at 09:28 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -86,6 +86,12 @@ CREATE TABLE `students` (
 --
 ALTER TABLE `administrators`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`code`,`semester`);
 
 --
 -- Indexes for table `students`
