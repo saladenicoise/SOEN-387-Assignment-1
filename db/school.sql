@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 09:28 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: Oct 02, 2022 at 07:45 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -23,58 +22,66 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `school` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `school`;
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrators`
+-- Table structure for table `administrator`
 --
 
-DROP TABLE IF EXISTS `administrators`;
-CREATE TABLE `administrators` (
-  `ID` varchar(8) NOT NULL,
-  `first_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `email` int(20) NOT NULL,
-  `phone_number` varchar(12) NOT NULL,
-  `dob` date NOT NULL
+CREATE TABLE `administrator` (
+                                 `employment_id` int(10) UNSIGNED NOT NULL,
+                                 `first_name` varchar(75) NOT NULL,
+                                 `last_name` varchar(75) NOT NULL,
+                                 `address` varchar(100) NOT NULL,
+                                 `email` varchar(100) NOT NULL,
+                                 `phone_number` varchar(50) NOT NULL,
+                                 `date_of_birth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses`
+-- Table structure for table `course`
 --
 
-DROP TABLE IF EXISTS `courses`;
-CREATE TABLE `courses` (
-  `code` varchar(8) NOT NULL,
-  `title` varchar(30) NOT NULL,
-  `semester` varchar(7) NOT NULL,
-  `days` varchar(2) NOT NULL,
-  `time` time NOT NULL,
-  `instructor` varchar(30) NOT NULL,
-  `room` varchar(10) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL
+CREATE TABLE `course` (
+                          `course_code` varchar(15) NOT NULL,
+                          `title` varchar(100) NOT NULL,
+                          `semester` varchar(20) NOT NULL,
+                          `days` varchar(100) NOT NULL,
+                          `time` time NOT NULL,
+                          `instructor` varchar(100) NOT NULL,
+                          `room` varchar(20) NOT NULL,
+                          `start_date` date NOT NULL,
+                          `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `students`
+-- Table structure for table `registrar`
 --
 
-DROP TABLE IF EXISTS `students`;
-CREATE TABLE `students` (
-  `ID` varchar(8) NOT NULL,
-  `first_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `email` int(20) NOT NULL,
-  `phone_number` varchar(12) NOT NULL,
-  `dob` date NOT NULL
+CREATE TABLE `registrar` (
+                             `id` int(10) UNSIGNED NOT NULL,
+                             `course_code` varchar(15) NOT NULL,
+                             `semester` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+                           `id` int(10) UNSIGNED NOT NULL,
+                           `first_name` varchar(75) NOT NULL,
+                           `last_name` varchar(75) NOT NULL,
+                           `address` varchar(100) NOT NULL,
+                           `email` varchar(100) NOT NULL,
+                           `phone_number` varchar(50) NOT NULL,
+                           `date_of_birth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -82,22 +89,46 @@ CREATE TABLE `students` (
 --
 
 --
--- Indexes for table `administrators`
+-- Indexes for table `administrator`
 --
-ALTER TABLE `administrators`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `administrator`
+    ADD PRIMARY KEY (`employment_id`),
+  ADD KEY `employment_id` (`employment_id`);
 
 --
--- Indexes for table `courses`
+-- Indexes for table `course`
 --
-ALTER TABLE `courses`
-  ADD PRIMARY KEY (`code`,`semester`);
+ALTER TABLE `course`
+    ADD PRIMARY KEY (`course_code`,`semester`),
+  ADD KEY `semester` (`semester`),
+  ADD KEY `course_code` (`course_code`);
 
 --
--- Indexes for table `students`
+-- Indexes for table `registrar`
 --
-ALTER TABLE `students`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `registrar`
+    ADD KEY `fk_student_id` (`id`),
+  ADD KEY `fk_course_course_code` (`course_code`),
+  ADD KEY `fk_course_semester` (`semester`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `registrar`
+--
+ALTER TABLE `registrar`
+    ADD CONSTRAINT `fk_course_course_code` FOREIGN KEY (`course_code`) REFERENCES `course` (`course_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_course_semester` FOREIGN KEY (`semester`) REFERENCES `course` (`semester`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_student_id` FOREIGN KEY (`id`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
