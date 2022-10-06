@@ -1,33 +1,24 @@
 <?php
 
-function test_input($data) 
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
 header_remove();
 $errorMessage = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require_once('configure.php');
-    $servername = DB_SERVER;
-    $username = DB_USER;
-    $password = DB_PASS;
-    $dbname = DB_NAME;
+    require_once('../../config/config.php');
+    require_once(PATH_PW_UTILS);
 
     $oldPassword = test_input($_POST['oldpassword']);
     $newPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12]);
     $email = test_input($_POST['email']);
     echo $email;
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    if($conn) 
+    if($conn)
     {
         $SQL = $conn->prepare("SELECT * FROM `useraccounts` WHERE email=?"); //Ensure user actually exists
         $SQL->bind_param('s', $email);
@@ -36,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = $SQL->num_rows;
         $SQL->close();
         if($result <= 0) { //Email does not exist
-            header('Location: ./changePasswordScript.php?stat=changePassE');
+            header("Location: ".PATH_CHANGE_PW_SCRIPT."?stat=changePassE");
             exit();
         }
         $SQL = $conn->prepare("UPDATE `useraccounts` SET password=? WHERE email=?");
@@ -48,12 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $SQL->execute();
         $SQL->close();
         $conn->close();
-        header('Location: ./login.php?stat=changePassS');
+        header("Location: ".PATH_LOGIN."?stat=changePassS");
     }
     else 
     {
         $conn->close();
-        header('Location: ./changePassword.php?stat=changePassD&email=' . base64_encode($email));
+        header("Location: ".PATH_CHANGE_PW."?stat=changePassD&email=" . base64_encode($email));
     }
 }
-?>
