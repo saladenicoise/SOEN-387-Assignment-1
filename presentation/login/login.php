@@ -5,8 +5,7 @@ error_reporting(0);
 session_start();
 
 if (isset($_SESSION["login"]) && $_SESSION["login"] != 0) { // Checks if Session is up(user has logged in)
-    require_once('./config/config.php');
-    header("Location: ".PATH_MAIN_PAGE);
+    header("location: ../mainPage/mainPage.php");
     exit();
 }
 $statusSet = isset($_GET['stat']);

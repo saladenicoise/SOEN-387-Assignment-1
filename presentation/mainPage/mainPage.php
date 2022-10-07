@@ -11,8 +11,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] != 0) { // Checks if Session
         $statusVal = $_GET['stat'];
     }
 } else {
-    require_once('./config/config.php');
-    header("location: ".PATH_LOGIN."?stat=login");
+    header("location: ../login/login.php?stat=login");
     exit();
 }
 ?>
