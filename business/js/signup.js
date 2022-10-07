@@ -3,7 +3,7 @@ function checkPassword() {
     this.p2 = document.getElementById('reConfirmPassword').value;
     this.messageBox = document.getElementById('message');
 
-    if ((this.p1 === "") || (this.p2 == "")) {
+    if ((this.p1 === "") || (this.p2 === "")) {
         this.messageBox.innerHTML = "";
         this.document.getElementById('submit').disabled = false;
         return;

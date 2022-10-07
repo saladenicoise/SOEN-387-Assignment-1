@@ -1,19 +1,9 @@
 <?php
-function test_input($data) 
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
 header_remove();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    require_once('configure.php'); 
-    $servername = DB_SERVER;
-    $username = DB_USER;
-    $password = DB_PASS;
-    $dbname = DB_NAME;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    require_once('../../config/config.php');
+    require_once(PATH_PW_UTILS);
 
     $uname = test_input($_POST['username']);
     $pword = $_POST['password'];
@@ -27,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $isAdmin = $_POST['isAdmin'];
     $isDefault = $_POST['isDefault'];
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -51,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $SQL_ADMIN->execute();
             $SQL_ADMIN->close();
             $conn->close();
-            header('Location: ./login.php');
+            header("Location: ".PATH_LOGIN);
         }
     }
 }
