@@ -2,7 +2,9 @@
 		
 		<html lang="en">
 	   <head>
-		      <title>Sample Database Query</title>
+        <link rel="stylesheet" href="../../styles/style.css">
+
+		      <title>Add Course</title>
 		      <style type = "text/css">
 		         body  {  }
 		         h2    { font-family: arial, sans-serif;
@@ -29,7 +31,8 @@
 					<option value="1">Summer</option>
 				  </select>
 			   </p>
-			   <p>Days of Course
+
+			   <p>Days of Course<br/>
 				  <select id="days" name="days[]" size="5" multiple="multiple">
 					<option value="M">Monday</option>
 					<option value="T">Tuesday</option>
@@ -38,6 +41,8 @@
 					<option value="F">Friday</option>
 				  </select>
 			   </p>
+			   <br/>
+
 			   <p>
 			   Time
 					<input type="time" id="time" name="time">
@@ -64,7 +69,7 @@
 
 
 			    <input type = "submit" value = "Add Course" />
-				</div>
-			  </form>
+</div>
+</form>
 </body>
 </html>
