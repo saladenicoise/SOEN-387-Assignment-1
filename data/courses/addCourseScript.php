@@ -1,71 +1,39 @@
 <?php
-header_remove();
+$errorMessage = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once('../../config/config.php');
     require_once(PATH_PW_UTILS);
 
-    extract( $_POST );
-    //$courseCode = test_input($_POST['courseCode']);
-    //$title = test_input($_POST['title']);
-    //$semester = test_input($_POST['semester']);
+    // Use extract method to set variables by default from post
+    extract($_POST);
 
-    $query="INSERT INTO course (course_code,title,semester,days,time,instructor,room,start_date,end_date)
-        VALUES ('$course_code','$title','$semester','$days','$time','$instructor','$room','$start_date','$end_date')";
-
-    print($query);
+    // Format days appropriately for DB
+    $number_of_days = count($_POST['days']);
+    $days = "";
+    $daysArray = $_POST['days'];
+    for ($i = 0; $i < $number_of_days; $i++) {
+        $days = $days . $daysArray[$i];
+    }
 
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
-     // Connect to MySQL
-     if ( !( $database = mysqli_connect( "localhost", "root", "")))
-        die( "Could not connect to database" );
-
-    // open School database
-    if ( !mysqli_select_db( $database ,"school" ) )
-        die( "Could not open products database" );
-
-     // query Products database
-     if ( !( $result = mysqli_query( $database,$query) ) )
-     {
-        print( "Could not execute query!" );
-        die( mysqli_error() . "" );
-     }
-    else
-    {
-        print("Course was inserted into the Database correctly");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
-    mysqli_close( $database );
+    if ($conn) {
+        $SQL = $conn->prepare("INSERT INTO course (course_code,title,semester,days,time,instructor,room,start_date,end_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+        if (!$SQL) {
+            $errorMessage = "Prepare failed: (" . $conn->errno . ") " . $conn->error;
+        } else {
+            //Insert into useraccounts table
+            $SQL->bind_param('sssssssss', $course_code, $title, $semester, $days, $time, $instructor, $room, $start_date, $end_date);
+            $SQL->execute();
+            $SQL->close();
+            header("Location: " . PATH_MAIN_PAGE);
+        }
     }
+}
 ?>
-
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Search Results</title>
-    <style type="text/css">
-        body {
-            font-family: arial, sans-serif;
-            background-color: #F0E68C
-        }
-
-        table {
-            background-color: #ADD8E6
-        }
-
-        td {
-            padding-top: 2px;
-            padding-bottom: 2px;
-            padding-left: 4px;
-            padding-right: 4px;
-            border-width: 1px;
-            border-style: inset
-        }
-    </style>
-</head>
-<body>
-Test
-</body>
-</html>

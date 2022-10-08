@@ -30,7 +30,7 @@
 				  </select>
 			   </p>
 			   <p>Days of Course
-				  <select id="days" name="days" size="5" multiple>
+				  <select id="days" name="days[]" size="5" multiple="multiple">
 					<option value="M">Monday</option>
 					<option value="T">Tuesday</option>
 					<option value="W">Wednesday</option>
@@ -66,24 +66,5 @@
 			    <input type = "submit" value = "Add Course" />
 				</div>
 			  </form>
-			  
-			  <h2> Search for Courses</h2>
-		      <form method = "post" action = "bookServer2.php">
-		         <div>
-		            <p>Select a field to display:
-		               <!-- add a select box containing options --> 
-		               <!-- for SELECT query -->
-		               <select name = "select">                   
-		                  <option selected = "selected">*</option>
-		                  <option>ID</option>                     
-		                  <option>Title</option>                  
-		                  <option>Category</option>               
-		                  <option>ISBN</option>                   
-		               </select></p>                              
-		            <input type = "submit" value = "Send Query" />
-</div>
-<br/>
-</form>
-
 </body>
 </html>
