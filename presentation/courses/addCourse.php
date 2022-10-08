@@ -1,6 +1,6 @@
 <!DOCTYPE html">
 		
-		<html >
+		<html lang="en">
 	   <head>
 		      <title>Sample Database Query</title>
 		      <style type = "text/css">
@@ -15,10 +15,10 @@
 		   <body>
 		      
 			  <h2>Add Course</h2>
-			  <form method = "post" action = "addCourseScript.php">
+			  <form method = "post" action = "../../data/courses/addCourseScript.php">
 			  <div>
 			  <p>Course ID
-			   <input name = "courseCode" type = "text" size = "10"/><br /></p>
+			   <input name = "course_code" type = "text" size = "10"/><br /></p>
 			   <p>Course Title
 			   <input name = "title" type = "text" size = "40" />
 			   </p><br/>
@@ -54,10 +54,10 @@
 			   <br/>
 			   <p>
 			   Start Date
-					<input type="date" id="startDate" name="startDate">
+					<input type="date" id="start_date" name="start_date">
 			   <br/>
 			   End Date
-					<input type="date" id="endDate" name="endDate">
+					<input type="date" id="end_date" name="end_date">
 			   </p>
 			   <br/>
 
