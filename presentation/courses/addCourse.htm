@@ -1,0 +1,89 @@
+<!DOCTYPE html">
+		
+		<html >
+	   <head>
+		      <title>Sample Database Query</title>
+		      <style type = "text/css">
+		         body  {  }
+		         h2    { font-family: arial, sans-serif;
+		                 color: blue }
+		         input { background-color: white;
+		                 color: black;
+		                 font-weight: bold }
+		      </style>
+		   </head>
+		   <body>
+		      
+			  <h2>Add Course</h2>
+			  <form method = "post" action = "addCourseScript.php">
+			  <div>
+			  <p>Course ID
+			   <input name = "courseCode" type = "text" size = "10"/><br /></p>
+			   <p>Course Title
+			   <input name = "title" type = "text" size = "40" />
+			   </p><br/>
+			   <p>Semester
+				  <select id="semester" name="semester">
+					<option value="2">Fall</option>
+					<option value="4">Winter</option>
+					<option value="1">Summer</option>
+				  </select>
+			   </p>
+			   <p>Days of Course
+				  <select id="days" name="days" size="5" multiple>
+					<option value="M">Monday</option>
+					<option value="T">Tuesday</option>
+					<option value="W">Wednesday</option>
+					<option value="R">Thursday</option>
+					<option value="F">Friday</option>
+				  </select>
+			   </p>
+			   <p>
+			   Time
+					<input type="time" id="time" name="time">
+			   </p>
+
+			   <p>
+			   Instructor
+					<input type="text" id="instructor" name="instructor">
+			   </p>
+			   <p>
+			   Room
+					<input type="text" id="room" name="room">
+			   </p>
+			   <br/>
+			   <p>
+			   Start Date
+					<input type="date" id="startDate" name="startDate">
+			   <br/>
+			   End Date
+					<input type="date" id="endDate" name="endDate">
+			   </p>
+			   <br/>
+
+
+
+			    <input type = "submit" value = "Add Course" />
+				</div>
+			  </form>
+			  
+			  <h2> Search for Courses</h2>
+		      <form method = "post" action = "bookServer2.php">
+		         <div>
+		            <p>Select a field to display:
+		               <!-- add a select box containing options --> 
+		               <!-- for SELECT query -->
+		               <select name = "select">                   
+		                  <option selected = "selected">*</option>
+		                  <option>ID</option>                     
+		                  <option>Title</option>                  
+		                  <option>Category</option>               
+		                  <option>ISBN</option>                   
+		               </select></p>                              
+		            <input type = "submit" value = "Send Query" />
+</div>
+<br/>
+</form>
+
+</body>
+</html>
