@@ -16,7 +16,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     print($query);
 
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-}
+
+     // Connect to MySQL
+     if ( !( $database = mysqli_connect( "localhost", "root", "")))
+        die( "Could not connect to database" );
+
+    // open School database
+    if ( !mysqli_select_db( $database ,"school" ) )
+        die( "Could not open products database" );
+
+     // query Products database
+     if ( !( $result = mysqli_query( $database,$query) ) )
+     {
+        print( "Could not execute query!" );
+        die( mysqli_error() . "" );
+     }
+    else
+    {
+        print("Course was inserted into the Database correctly");
+    }
+
+    mysqli_close( $database );
+    }
 ?>
 
 
