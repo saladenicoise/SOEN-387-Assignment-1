@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $SQL->execute();
             $SQL->close();
             //Insert into admin table
-            $SQL_ADMIN->bind_param('sssssss', $eid, $fName, $lName, $address, $email, $phone, $dob);
+            $SQL_ADMIN->bind_param('issssss', $eid, $fName, $lName, $address, $email, $phone, $dob);
             $SQL_ADMIN->execute();
             $SQL_ADMIN->close();
             $conn->close();

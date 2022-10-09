@@ -32,7 +32,7 @@ if(!$statusSet) : ?>
         <label for="username"></label><input id="username" TYPE='text' Name='username' maxlength="20" placeholder="Username" required>
         <label for="email"></label><input id="email" type="email" name='email' placeholder="Email" required>
         <label for="password"></label><input id="password" type='password' name="password" placeholder="Password" required>
-        <label for="id"></label><input id="id" type='text' name="id" placeholder="Employment ID" required>
+        <label for="id"></label><input id="id" type='number' name="id" placeholder="Employment ID" required>
         <label for="fName"></label><input id="fName" type='text' name="fName" placeholder="First Name" required>
         <label for="lName"></label><input id="lName" type='text' name="lName" placeholder="Last Name" required>
         <label for="address"></label><input id="address" type='text' name="address" placeholder="Address" required>
