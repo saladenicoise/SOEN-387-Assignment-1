@@ -33,8 +33,8 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] != 0) { // Checks if Session
 <p class="status-message" id='statusBox'></p>
 <button onclick="location.href='../../presentation/login/login.php'">Login Page</button>
 <button onclick="location.href='../../presentation/login/changePassword.php'">Change Password Page</button>
-<button onclick="location.href='../courses/createCourse.php'">Create Course</button>
-<button onclick="location.href='../courses/addCourse.php'">Add Course</button>
+<button onclick="location.href='../courses/createCourse.php'">Create Course (Admin)</button>
+<button onclick="location.href='../courses/addCourse.php'">Add Course (Student)</button>
 <button onclick="location.href='../../business/login/logoutScript.php'">Logout</button>
 </body>
 
