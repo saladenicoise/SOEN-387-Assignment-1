@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $date = date('d-m-y-s');
-    $file = "report_courseList". $date .".txt";
-    $txt = fopen($file, "w") or die("Unable to generate report file!");
-
+    
     $id = test_input($_POST["sid"]);
-
+    
+    $file = "report_courseList". $date . "-". $id . ".txt";
+    $txt = fopen($file, "w") or die("Unable to generate report file!");
     fwrite($txt, "Student with ID " . $id . " is registered for the following courses:\n");
     $SQL = $conn->prepare("SELECT course_code, semester FROM `registrar` WHERE id=?");
     $SQL->bind_param("s", $id);

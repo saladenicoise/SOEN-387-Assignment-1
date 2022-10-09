@@ -9,13 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $date = date('d-m-y-s');
-    $file = "report_studentList". $date .".txt";
-    $txt = fopen($file, "w") or die("Unable to generate report file!");
-
+    
     $course = $_POST["courses"];
     $courseCode = substr($course, 0, strpos($course, "--"));
     $courseSemester = substr($course, strlen($courseCode)+2, strpos($course, ":")-(strlen($courseCode)+2));
-
+    
+    $file = "report_studentList". $date . "-" . $courseCode .".txt";
+    $txt = fopen($file, "w") or die("Unable to generate report file!");
     fwrite($txt, "The following students are registered for " . $course . ": \n");
     $SQL = $conn->prepare("SELECT id FROM `registrar` WHERE course_code=? AND semester=?");
     $SQL->bind_param("ss", $courseCode, $courseSemester);
