@@ -53,7 +53,7 @@ if (!$statusSet) : ?>
     <div>
         <p>Student ID
             <label>
-                <input name="id" type="number" size="10" placeholder="Student ID" required/>
+                <input name="id" type="number" min="0" size="10" placeholder="Student ID" required/>
             </label><br/></p>
         <p>Course Code
             <label>

@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $SQL->execute();
             $SQL->close();
             $conn->close();
-            header("Location: ".PATH_LOGIN."?stat=addCourseS");
+            header("Location: ".PATH_LOGIN."?stat=success");
         }
     }
     else {

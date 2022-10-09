@@ -39,7 +39,7 @@ function printStatus(status) {
     if (status === "addCourseD") {
         this.statusBox.innerHTML = "<span class=\"fail\">Unable to add course</span>"
     }
-    if (status === "addCourseS") {
+    if (status === "success") {
         this.statusBox.innerHTML = "<span class=\"fail\">Successfully added course</span>"
     }
     if (status === "addCourseES") {
