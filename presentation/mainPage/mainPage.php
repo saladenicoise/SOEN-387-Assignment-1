@@ -22,7 +22,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] != 0) { // Checks if Session
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../styles/style.css">
     <script src="../../business/js/printStat.js"></script>
     <script src="../../business/js/signup.js"></script>
     <title>Temp Logged in Page</title>
@@ -32,9 +32,9 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] != 0) { // Checks if Session
 <p>Temp Home Page</p>
 <p class="status-message" id='statusBox'></p>
 <button onclick="location.href='../../presentation/login/login.php'">Login Page</button>
-<button onclick="location.href='../../presentation/login/registerUserAccount.php'">Register Page</button>
 <button onclick="location.href='../../presentation/login/changePassword.php'">Change Password Page</button>
-<button onclick="location.href='../courses/addCourse.php'">Add Course</button>
+<button onclick="location.href='../courses/createCourse.php'">Create Course (Admin)</button>
+<button onclick="location.href='../courses/addCourse.php'">Add Course (Student)</button>
 <button onclick="location.href='../../business/login/logoutScript.php'">Logout</button>
 <button onclick="location.href='../../presentation/reportGeneration/report.php'">Report Generation Page (Admin)</button>
 </body>

@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $SQL->execute();
                 $SQL->close();
                 //Insert into student table
-                $SQL_STUDENT->bind_param('sssssss', $sid, $fName, $lName, $address, $email, $phone, $dob);
+                $SQL_STUDENT->bind_param('issssss', $sid, $fName, $lName, $address, $email, $phone, $dob);
                 $SQL_STUDENT->execute();
                 $SQL_STUDENT->close();
                 $conn->close();

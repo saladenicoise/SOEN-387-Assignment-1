@@ -1,4 +1,5 @@
 <?php
+
 $errorMessage = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -8,13 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Use extract method to set variables by default from post
     extract($_POST);
 
-    // Format days appropriately for DB
-    $number_of_days = count($_POST['days']);
-    $days = "";
-    $daysArray = $_POST['days'];
-    for ($i = 0; $i < $number_of_days; $i++) {
-        $days = $days . $daysArray[$i];
-    }
+    $course_code = test_input($_POST['course_code']);
+    $id = test_input($_POST['id']);
+    $semester = test_input($_POST['semester']);
 
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
@@ -22,35 +19,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    if ($conn) {
-        $SQL = $conn->prepare("INSERT INTO course (course_code,title,semester,days,time,instructor,room,start_date,end_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    if($conn)
+    {
+        // TODO: Store id in session & remove this section (optional later)
+        $SQL = $conn->prepare("SELECT id FROM `student` WHERE id=?"); //Ensure student actually exists
+        $SQL->bind_param('i', $id);
+        $SQL->execute();
+        $SQL->store_result();
+        $result = $SQL->num_rows;
+        $SQL->close();
+        if($result <= 0) { //Student does not exist
+            header("Location: ".PATH_ADD_COURSE."?stat=addCourseES");
+            exit();
+        }
 
+        $SQL = $conn->prepare("SELECT course_code, semester FROM `course` WHERE course_code=? AND semester=?"); //Ensure course actually exists
+        $SQL->bind_param('ss', $course_code, $semester);
+        $SQL->execute();
+        $SQL->store_result();
+        $result = $SQL->num_rows;
+        $SQL->close();
+        if($result <= 0) { //Course does not exist
+            header("Location: ".PATH_ADD_COURSE."?stat=addCourseEC");
+            exit();
+        }
+
+        $SQL = $conn->prepare("SELECT course_code, id, semester FROM `registrar` WHERE course_code=? AND id=? AND semester=?"); //Ensure registrar doesn't actually exists
+        $SQL->bind_param('sis', $course_code, $id, $semester);
+        $SQL->execute();
+        $SQL->store_result();
+        $result = $SQL->num_rows;
+        $SQL->close();
+        if($result >= 1) { //Registrar already exists
+            header("Location: ".PATH_ADD_COURSE."?stat=addCourseER");
+            exit();
+        }
+
+        $SQL = $conn->prepare("SELECT id, semester FROM `registrar` WHERE id=? AND semester=?"); //Ensure max number of registered courses not reached
+        $SQL->bind_param('is', $id, $semester);
+        $SQL->execute();
+        $SQL->store_result();
+        $result = $SQL->num_rows;
+        $SQL->close();
+
+        // Business layer to check if max number of courses reached
+        require_once('../../business/courses/addCourseBusiness.php');
+        addCourseBusiness($result);
+
+        $SQL = $conn->prepare("INSERT INTO `registrar` (course_code, id, semester) VALUES (?, ?, ?)");
         if (!$SQL) {
             $errorMessage = "Prepare failed: (" . $conn->errno . ") " . $conn->error;
-        } else {
-            //Insert into useraccounts table
-            $SQL->bind_param('sssssssss', $course_code, $title, $semester, $days, $time, $instructor, $room, $start_date, $end_date);
-            $isSuccess = $SQL->execute();
+        }
+        else
+        {
+            //Insert into registrar
+            $SQL->bind_param('sis', $course_code, $id, $semester);
+            $SQL->execute();
             $SQL->close();
-            if ($isSuccess) {
-                header("Location: " . PATH_ADD_COURSE . "?stat=addCourseS");
-            } else {
-                header("Location: " . PATH_ADD_COURSE . "?stat=addCourseD");
-            }
+            $conn->close();
+            header("Location: ".PATH_LOGIN."?stat=addCourseS");
         }
     }
+    else {
+        header("Location: ".PATH_ADD_COURSE."?stat=addCourseD");
+    }
 }
-?>
-
-
-// query Products database
-if ( !( $result = mysqli_query( $database,$query) ) )
-{
-print( "Could not execute query! <br/>" );
-die( mysqli_error() . "</body></html>" );
-} // end if
-else
-{
-print("Book was inserted into the Database correctly");
-}
-

@@ -24,7 +24,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { // Checks if user is
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../styles/style.css">
     <script src="../../business/js/printStat.js"></script>
     <title>Generate Reports</title>
 </head>
@@ -44,7 +44,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { // Checks if user is
                     }
                 ?>
             </select>
-            <br>
+            <br><br>
             <button type="submit">Generate Report</button>
         </form>
     </div>
@@ -54,8 +54,8 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { // Checks if user is
         <p>Will auto-download a file upon report generation completion</p>
         <form name="studentToCoursesForm" method="POST" action="../../data/reportGeneration/studentToCoursesScript.php">
             <p class="status-message" id='statusBox'></p>
-            <label for="sid">Student ID: </label><input id="sid" TYPE='text' Name='sid' placeholder="SudentID" required>
-            <br>
+            <label for="sid">Student ID: </label><input id="sid" TYPE='text' Name='sid' placeholder="Student ID" required>
+            <br><br>
             <button type="submit">Generate Report</button>
         </form>
     </div>

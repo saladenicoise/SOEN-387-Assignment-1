@@ -14,8 +14,10 @@ const PATH_LOGIN = '../../presentation/login/login.php';
 const PATH_REG_USER_ACCOUNT = '../../presentation/login/registerUserAccount.php';
 const PATH_MAIN_PAGE = '../../presentation/mainPage/mainPage.php';
 const PATH_INDEX = '../../index.html';
+const PATH_CREATE_COURSE = '../../presentation/courses/createCourse.php';
 const PATH_ADD_COURSE = '../../presentation/courses/addCourse.php';
 const PATH_REPORT_UTILS = '../../business/util/reportUtils.php';
+const PATH_REPORT = '../../presentation/reportGeneration/report.php';
 
 // Currently Unused File Paths
 //const PATH_PRINT_STAT = '../../business/js/printStat.js';
@@ -27,3 +29,5 @@ const PATH_REPORT_UTILS = '../../business/util/reportUtils.php';
 //const PATH_REG_ADMIN = '../../presentation/login/registerAdmin.php';
 //const PATH_STYLES_LOGIN = '../../styles/login.css';
 //const PATH_STYLES_STYLE = '../../styles/style.css';
+//const PATH_ADD_COURSE_SCRIPT = '../../data/courses/addCourseScript.php';
+//const PATH_ADD_COURSE_BUSINESS = '../../business/courses/addCourseBusiness.php';
