@@ -44,12 +44,12 @@ if (!$statusSet) : ?>
 <form method="post" action="../../data/courses/addCourseScript.php">
     <div>
         <p>Course ID
-            <input name="course_code" type="text" size="10"/><br/></p>
+            <input name="course_code" type="text" size="10" required/><br/></p>
         <p>Course Title
-            <input name="title" type="text" size="40"/>
+            <input name="title" type="text" size="40" required/>
         </p><br/>
         <p>Semester
-            <select id="semester" name="semester">
+            <select id="semester" name="semester" required>
                 <option value="2">Fall</option>
                 <option value="4">Winter</option>
                 <option value="1">Summer</option>
@@ -57,7 +57,7 @@ if (!$statusSet) : ?>
         </p>
 
         <p>Days of Course<br/>
-            <select id="days" name="days[]" size="5" multiple="multiple">
+            <select id="days" name="days[]" size="5" multiple="multiple" required>
                 <option value="M">Monday</option>
                 <option value="T">Tuesday</option>
                 <option value="W">Wednesday</option>
@@ -69,24 +69,24 @@ if (!$statusSet) : ?>
 
         <p>
             Time
-            <input type="time" id="time" name="time">
+            <input type="time" id="time" name="time" required>
         </p>
 
         <p>
             Instructor
-            <input type="text" id="instructor" name="instructor">
+            <input type="text" id="instructor" name="instructor" required>
         </p>
         <p>
             Room
-            <input type="text" id="room" name="room">
+            <input type="text" id="room" name="room" required>
         </p>
         <br/>
         <p>
             Start Date
-            <input type="date" id="start_date" name="start_date">
+            <input type="date" id="start_date" name="start_date" required>
             <br/>
             End Date
-            <input type="date" id="end_date" name="end_date">
+            <input type="date" id="end_date" name="end_date" required>
         </p>
         <br/>
 
