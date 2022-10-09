@@ -20,7 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $SQL->bind_param("s", $id);
     $SQL->execute();
     $result = $SQL->get_result(); //mysqli_result object
+    $resultNum = $SQL->num_rows;
     $SQL->close();
+
+    if($resultNum <= 0) { //Id does not exist
+        fclose($txt);
+        $conn->close();
+        unlink($file);
+        header("Location: ".PATH_REPORT."?stat=addCourseES");
+        exit();
+    }
+
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) { //For every course
         $SQL = $conn->prepare("SELECT * FROM `course` WHERE course_code=? AND semester=?");
         $SQL->bind_param("ss", $row["course_code"], $row["semester"]);
@@ -32,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     fclose($txt);
     $conn->close();
+
     // Downloads Report File
     header('Content-Description: File Transfer');
     header('Content-Disposition: attachment; filename='.basename($file));
@@ -41,7 +52,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Content-Length: ' . filesize($file));
     header("Content-Type: text/plain");
     readfile($file);
-    unlink("report_courseList". $date .".txt");
+    unlink($file);
 }
-
-?>

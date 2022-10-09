@@ -42,7 +42,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Content-Length: ' . filesize($file));
     header("Content-Type: text/plain");
     readfile($file);
-    unlink("report_studentList". $date .".txt");
+    unlink($file);
 }
-
-?>

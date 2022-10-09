@@ -55,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
 
-        $SQL = $conn->prepare("SELECT id FROM `registrar` WHERE id=?"); //Ensure max number of registered courses not reached
-        $SQL->bind_param('i', $id);
+        $SQL = $conn->prepare("SELECT id FROM `registrar` WHERE id=? AND semester=?"); //Ensure max number of registered courses not reached
+        $SQL->bind_param('is', $id, $semester);
         $SQL->execute();
         $SQL->store_result();
         $result = $SQL->num_rows;
