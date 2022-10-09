@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if ($_SESSION["admin"] != 1) { //If we already logged in, and we're not admin, redirect to main page
+    require_once('../../config/config.php');
+    header("Location: " . PATH_MAIN_PAGE . "?stat=notA");
+    exit();
+}
 
 $statusSet = isset($_GET['stat']);
 $statusVal = "";
