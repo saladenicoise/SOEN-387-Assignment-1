@@ -32,6 +32,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { // Checks if user is
 <body>
     <div id="courseToStudents">
         <h2>Report: All students taking a specified class</h2>
+        <p>Will auto-download a file upon report generation completion</p>
         <form name="courseToStudentsForm" method="POST" action="../../data/reportGeneration/courseToStudentsScript.php">
             <p class="status-message" id='statusBox'></p>
             <label for="courses">Course:</label>
@@ -50,6 +51,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { // Checks if user is
     <hr>
     <div id="studentToCourses">
         <h2>Report: All courses taken by a student</h2>
+        <p>Will auto-download a file upon report generation completion</p>
         <form name="studentToCoursesForm" method="POST" action="../../data/reportGeneration/studentToCoursesScript.php">
             <p class="status-message" id='statusBox'></p>
             <label for="sid">Student ID: </label><input id="sid" TYPE='text' Name='sid' placeholder="SudentID" required>
