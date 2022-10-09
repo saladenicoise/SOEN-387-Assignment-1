@@ -107,5 +107,8 @@ if (!$statusSet) : ?>
         <p class="status-message" id='statusBox'></p>
     </div>
 </form>
+<br>
+<hr>
+<button onclick="location.href='../../presentation/mainPage/mainPage.php'">Main Page</button>
 </body>
 </html>
