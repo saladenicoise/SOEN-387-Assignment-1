@@ -15,6 +15,7 @@ const PATH_REG_USER_ACCOUNT = '../../presentation/login/registerUserAccount.php'
 const PATH_MAIN_PAGE = '../../presentation/mainPage/mainPage.php';
 const PATH_INDEX = '../../index.html';
 const PATH_ADD_COURSE = '../../presentation/courses/addCourse.php';
+const PATH_REPORT_UTILS = '../../business/util/reportUtils.php';
 
 // Currently Unused File Paths
 //const PATH_PRINT_STAT = '../../business/js/printStat.js';
