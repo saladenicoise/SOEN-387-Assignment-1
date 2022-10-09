@@ -27,4 +27,10 @@ function printStatus(status) {
     if (status === "login") {
         this.statusBox.innerHTML = "<span class=\"fail\">You must login to access this content</span>"
     }
+    if (status === "addCourseD") {
+        this.statusBox.innerHTML = "<span class=\"fail\">Unable to add course</span>"
+    }
+    if (status === "addCourseS") {
+        this.statusBox.innerHTML = "<span class=\"fail\">Successfully added course</span>"
+    }
 }

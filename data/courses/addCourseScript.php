@@ -30,10 +30,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             //Insert into useraccounts table
             $SQL->bind_param('sssssssss', $course_code, $title, $semester, $days, $time, $instructor, $room, $start_date, $end_date);
-            $SQL->execute();
+            $isSuccess = $SQL->execute();
             $SQL->close();
-            header("Location: " . PATH_MAIN_PAGE);
+            if ($isSuccess) {
+                header("Location: " . PATH_ADD_COURSE . "?stat=addCourseS");
+            } else {
+                header("Location: " . PATH_ADD_COURSE . "?stat=addCourseD");
+            }
         }
     }
 }
 ?>
+
+
+// query Products database
+if ( !( $result = mysqli_query( $database,$query) ) )
+{
+print( "Could not execute query! <br/>" );
+die( mysqli_error() . "</body></html>" );
+} // end if
+else
+{
+print("Book was inserted into the Database correctly");
+}
+
