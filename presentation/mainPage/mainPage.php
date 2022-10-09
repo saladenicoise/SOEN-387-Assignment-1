@@ -34,7 +34,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] != 0) { // Checks if Session
 <button onclick="location.href='../../presentation/login/login.php'">Login Page</button>
 <button onclick="location.href='../../presentation/login/registerUserAccount.php'">Register Page</button>
 <button onclick="location.href='../../presentation/login/changePassword.php'">Change Password Page</button>
-<button onclick="location.href='../courses/addCourse.php'">Add Course</button>
+<button onclick="location.href='../courses/createCourse.php'">Create Course</button>
 <button onclick="location.href='../../business/login/logoutScript.php'">Logout</button>
 </body>
 

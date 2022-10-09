@@ -33,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $isSuccess = $SQL->execute();
             $SQL->close();
             if ($isSuccess) {
-                header("Location: " . PATH_ADD_COURSE . "?stat=addCourseS");
+                header("Location: " . PATH_CREATE_COURSE . "?stat=createCourseS");
             } else {
-                header("Location: " . PATH_ADD_COURSE . "?stat=addCourseD");
+                header("Location: " . PATH_CREATE_COURSE . "?stat=createCourseD");
             }
         }
     }

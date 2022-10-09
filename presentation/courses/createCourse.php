@@ -42,13 +42,13 @@ if ($statusSet) {
 
 <?php
 if (!$statusSet) : ?>
-<body class="addCourse">
+<body class="createCourse">
 <?php else : ?>
-<body class="addCourse" onload="printStatus('<?php echo $statusVal; ?>')">
+<body class="createCourse" onload="printStatus('<?php echo $statusVal; ?>')">
 <?php endif; ?>
 
 <h2>Add Course</h2>
-<form method="post" action="../../data/courses/addCourseScript.php">
+<form method="post" action="../../data/courses/createCourseScript.php">
     <div>
         <p>Course ID
             <input name="course_code" type="text" size="10" required/><br/></p>
@@ -98,7 +98,7 @@ if (!$statusSet) : ?>
         <br/>
 
 
-        <input type="submit" value="Add Course"/>
+        <input type="submit" value="Create Course"/>
         <p class="status-message" id='statusBox'></p>
     </div>
 </form>
