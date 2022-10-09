@@ -144,6 +144,7 @@ ALTER TABLE `course`
 -- Indexes for table `registrar`
 --
 ALTER TABLE `registrar`
+  ADD PRIMARY KEY (`id`, `course_code`, `semester`),
   ADD KEY `fk_student_id` (`id`),
   ADD KEY `fk_course_course_code` (`course_code`),
   ADD KEY `fk_course_semester` (`semester`);
