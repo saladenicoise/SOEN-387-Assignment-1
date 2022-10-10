@@ -16,6 +16,7 @@ const PATH_MAIN_PAGE = '../../presentation/mainPage/mainPage.php';
 const PATH_INDEX = '../../index.html';
 const PATH_CREATE_COURSE = '../../presentation/courses/createCourse.php';
 const PATH_ADD_COURSE = '../../presentation/courses/addCourse.php';
+const PATH_REMOVE_COURSE = '../../presentation/courses/removeCourse.php';
 const PATH_REPORT_UTILS = '../../business/util/reportUtils.php';
 const PATH_REPORT = '../../presentation/reportGeneration/report.php';
 
@@ -31,3 +32,4 @@ const PATH_REPORT = '../../presentation/reportGeneration/report.php';
 //const PATH_STYLES_STYLE = '../../styles/style.css';
 //const PATH_ADD_COURSE_SCRIPT = '../../data/courses/addCourseScript.php';
 //const PATH_ADD_COURSE_BUSINESS = '../../business/courses/addCourseBusiness.php';
+//const PATH_REMOVE_COURSE_SCRIPT = '../../data/courses/removeCourseScript.php';
