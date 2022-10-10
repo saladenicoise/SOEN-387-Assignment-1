@@ -44,6 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
 
+        // Business layer to check if CURDATE()<=end_date
+        require_once('../../business/courses/addCourseBusiness.php');
+        removeCourseDateCheck($conn, $course_code, $semester);
+
         $SQL = $conn->prepare("SELECT course_code, id, semester FROM `registrar` WHERE course_code=? AND id=? AND semester=?"); //Ensure registrar actually exists
         $SQL->bind_param('sis', $course_code, $id, $semester);
         $SQL->execute();

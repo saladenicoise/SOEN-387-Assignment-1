@@ -44,6 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
 
+        // Business layer to check if CURDATE()<=start_date+7
+        require_once('../../business/courses/addCourseBusiness.php');
+        addCourseDateCheck($conn, $course_code, $semester);
+
         $SQL = $conn->prepare("SELECT course_code, id, semester FROM `registrar` WHERE course_code=? AND id=? AND semester=?"); //Ensure registrar doesn't actually exists
         $SQL->bind_param('sis', $course_code, $id, $semester);
         $SQL->execute();
@@ -63,8 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $SQL->close();
 
         // Business layer to check if max number of courses reached
-        require_once('../../business/courses/addCourseBusiness.php');
-        addCourseBusiness($result);
+        maxRegisteredCourses($result);
 
         $SQL = $conn->prepare("INSERT INTO `registrar` (course_code, id, semester) VALUES (?, ?, ?)");
         if (!$SQL) {
