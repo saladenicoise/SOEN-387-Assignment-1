@@ -54,4 +54,19 @@ function printStatus(status) {
     if (status === "addCourseEM") {
         this.statusBox.innerHTML = "<span class=\"fail\">Max number of registered courses reached</span>"
     }
+    if (status === "addCourseL") {
+        this.statusBox.innerHTML = "<span class=\"fail\">Cannot add course over one week after semester starts</span>"
+    }
+    if (status === "removeCourseE") {
+        this.statusBox.innerHTML = "<span class=\"fail\">Registered course doesn't exist</span>"
+    }
+    if (status === "removeCourseF") {
+        this.statusBox.innerHTML = "<span class=\"fail\">Failed to remove course</span>"
+    }
+    if (status === "removeCourseS") {
+        this.statusBox.innerHTML = "<span class=\"sucess\">Successfully removed course</span>"
+    }
+    if (status === "removeCourseL") {
+        this.statusBox.innerHTML = "<span class=\"fail\">Cannot remove course after semester ends</span>"
+    }
 }

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = $SQL->num_rows;
         $SQL->close();
         if($result <= 0) { //Student does not exist
-            header("Location: ".PATH_ADD_COURSE."?stat=addCourseES");
+            header("Location: ".PATH_REMOVE_COURSE."?stat=addCourseES");
             exit();
         }
 
@@ -40,50 +40,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = $SQL->num_rows;
         $SQL->close();
         if($result <= 0) { //Course does not exist
-            header("Location: ".PATH_ADD_COURSE."?stat=addCourseEC");
+            header("Location: ".PATH_REMOVE_COURSE."?stat=addCourseEC");
             exit();
         }
 
-        // Business layer to check if CURDATE()<=start_date+7
+        // Business layer to check if CURDATE()<=end_date
         require_once('../../business/courses/addCourseBusiness.php');
-        addCourseDateCheck($conn, $course_code, $semester);
+        removeCourseDateCheck($conn, $course_code, $semester);
 
-        $SQL = $conn->prepare("SELECT course_code, id, semester FROM `registrar` WHERE course_code=? AND id=? AND semester=?"); //Ensure registrar doesn't actually exists
+        $SQL = $conn->prepare("SELECT course_code, id, semester FROM `registrar` WHERE course_code=? AND id=? AND semester=?"); //Ensure registrar actually exists
         $SQL->bind_param('sis', $course_code, $id, $semester);
         $SQL->execute();
         $SQL->store_result();
         $result = $SQL->num_rows;
         $SQL->close();
-        if($result >= 1) { //Registrar already exists
-            header("Location: ".PATH_ADD_COURSE."?stat=addCourseER");
+        if($result <= 0) { //Registrar doesn't exists
+            header("Location: ".PATH_REMOVE_COURSE."?stat=removeCourseE");
             exit();
         }
 
-        $SQL = $conn->prepare("SELECT id, semester FROM `registrar` WHERE id=? AND semester=?"); //Ensure max number of registered courses not reached
-        $SQL->bind_param('is', $id, $semester);
-        $SQL->execute();
-        $SQL->store_result();
-        $result = $SQL->num_rows;
-        $SQL->close();
-
-        // Business layer to check if max number of courses reached
-        maxRegisteredCourses($result);
-
-        $SQL = $conn->prepare("INSERT INTO `registrar` (course_code, id, semester) VALUES (?, ?, ?)");
+        $SQL = $conn->prepare("DELETE FROM `registrar` WHERE course_code=? AND id=? AND semester=?");
+        $SQL->bind_param('sis', $course_code, $id, $semester);
         if (!$SQL) {
             $errorMessage = "Prepare failed: (" . $conn->errno . ") " . $conn->error;
         }
         else
         {
-            //Insert into registrar
+            //Delete from registrar
             $SQL->bind_param('sis', $course_code, $id, $semester);
             $SQL->execute();
             $SQL->close();
             $conn->close();
-            header("Location: ".PATH_LOGIN."?stat=addCourseS");
+            header("Location: ".PATH_LOGIN."?stat=removeCourseS");
         }
     }
     else {
-        header("Location: ".PATH_ADD_COURSE."?stat=addCourseD");
+        header("Location: ".PATH_REMOVE_COURSE."?stat=removeCourseF");
     }
 }
