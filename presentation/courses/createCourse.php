@@ -1,9 +1,8 @@
 <?php
 
 session_start();
-
+require_once('../../config/config.php');
 if ($_SESSION["admin"] != 1) { //If we already logged in, and we're not admin, redirect to main page
-    require_once('../../config/config.php');
     header("Location: " . PATH_MAIN_PAGE . "?stat=notA");
     exit();
 }
@@ -93,16 +92,6 @@ if (!$statusSet) : ?>
             <label for="room"></label><input type="text" id="room" name="room" required>
         </p>
         <br/>
-        <p>
-            Start Date
-            <label for="start_date"></label><input type="date" id="start_date" name="start_date" required>
-            <br/>
-            End Date
-            <label for="end_date"></label><input type="date" id="end_date" name="end_date" required>
-        </p>
-        <br/>
-
-
         <input type="submit" value="Create Course"/>
         <p class="status-message" id='statusBox'></p>
     </div>
