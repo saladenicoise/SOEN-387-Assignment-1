@@ -1,5 +1,6 @@
 function printStatus(status) {
     this.statusBox = document.getElementById('statusBox');
+    console.log("Should be printing status of: " + status);
     if (status === "signupU") { //Signup Username already taken
         this.statusBox.innerHTML = "<span class=\"fail\">Username Already Taken</span>";
     }
@@ -34,7 +35,7 @@ function printStatus(status) {
         this.statusBox.innerHTML = "<span class=\"fail\">Unable to create course</span>"
     }
     if (status === "createCourseS") {
-        this.statusBox.innerHTML = "<span class=\"fail\">Successfully created course</span>"
+        this.statusBox.innerHTML = "<span class=\"success\">Successfully created course</span>"
     }
     if (status === "addCourseD") {
         this.statusBox.innerHTML = "<span class=\"fail\">Unable to add course</span>"

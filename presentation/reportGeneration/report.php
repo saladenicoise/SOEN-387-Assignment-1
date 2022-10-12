@@ -24,11 +24,16 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { // Checks if user is
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/style.css?version=1">
     <script src="../../business/js/printStat.js"></script>
     <title>Generate Reports</title>
 </head>
-
+<?php
+if(!$statusSet) : ?>
+<body>
+<?php else : ?>
+    <body onload="printStatus('<?php echo $statusVal;?>')">
+<?php endif; ?>
 <body>
     <div id="courseToStudents">
         <h2>Report: All students taking a specified class</h2>

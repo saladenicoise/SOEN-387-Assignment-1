@@ -18,7 +18,7 @@ if ($statusSet) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/style.css?version=1">
 
     <title>Create Course</title>
     <style>
