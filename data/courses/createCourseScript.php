@@ -1,4 +1,5 @@
 <?php
+require_once('../../business/courses/addCourseBusiness.php');
 
 $errorMessage = "";
 
@@ -8,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Use extract method to set variables by default from post
     extract($_POST);
+    $start_date = getStartDate($semester);
+    $end_date = getEndDate($semester);
 
     // Format days appropriately for DB
     $number_of_days = count($_POST['days']);

@@ -20,6 +20,21 @@ const PATH_REMOVE_COURSE = '../../presentation/courses/removeCourse.php';
 const PATH_REPORT_UTILS = '../../business/util/reportUtils.php';
 const PATH_REPORT = '../../presentation/reportGeneration/report.php';
 
+// Dates
+// Fall
+const FALL_DB_NAME = "Fall";
+const FALL_START_DATE = "2022-09-06";
+const FALL_END_DATE = "2022-12-22";
+// Winter
+const WINTER_DB_NAME = "Winter";
+const WINTER_START_DATE = "2023-01-09";
+const WINTER_END_DATE = "2023-05-02";
+// Summer
+const SUMMER_DB_NAME = "Summer";
+const SUMMER_START_DATE = "2023-05-03";
+const SUMMER_END_DATE = "2023-08-10";
+
+
 // Currently Unused File Paths
 //const PATH_PRINT_STAT = '../../business/js/printStat.js';
 //const PATH_SIGNUP = '../../business/js/signup.js';

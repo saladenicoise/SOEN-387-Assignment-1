@@ -36,3 +36,29 @@ function removeCourseDateCheck($conn, $course_code, $semester)
         exit();
     }
 }
+
+function getStartDate($semester)
+{
+    if ($semester == FALL_DB_NAME) {
+        return FALL_START_DATE;
+    } else if ($semester == WINTER_DB_NAME) {
+        return WINTER_START_DATE;
+    } else if ($semester == SUMMER_DB_NAME) {
+        return SUMMER_START_DATE;
+    }
+
+    return ""; // Should normally not come here
+}
+
+function getEndDate($semester)
+{
+    if ($semester == FALL_DB_NAME) {
+        return FALL_END_DATE;
+    } else if ($semester == WINTER_DB_NAME) {
+        return WINTER_END_DATE;
+    } else if ($semester == SUMMER_DB_NAME) {
+        return SUMMER_END_DATE;
+    }
+
+    return ""; // Should normally not come here
+}
