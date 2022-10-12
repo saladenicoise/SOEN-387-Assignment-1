@@ -65,7 +65,7 @@ function printStatus(status) {
         this.statusBox.innerHTML = "<span class=\"fail\">Failed to remove course</span>"
     }
     if (status === "removeCourseS") {
-        this.statusBox.innerHTML = "<span class=\"sucess\">Successfully removed course</span>"
+        this.statusBox.innerHTML = "<span class=\"success\">Successfully removed course</span>"
     }
     if (status === "removeCourseL") {
         this.statusBox.innerHTML = "<span class=\"fail\">Cannot remove course after semester ends</span>"
