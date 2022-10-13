@@ -13,7 +13,7 @@ if($statusSet) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/style.css?version=1">
+    <link rel="stylesheet" href="../../styles/style.css?v=1.1">
     <link rel="stylesheet" href="../../styles/login.css">
     <title>Register User Account</title>
     <script src="../../business/js/signup.js"></script>
@@ -46,7 +46,7 @@ if(!$statusSet) : ?>
         <button class="sub-button" id="submit" type="submit">Submit</button>
         <button class="res-button" type="reset">Reset</button>
         <br>
-        <a class="link" href="../../index.html">Main Page</a>
+        <a class="link" href="../../index.php">Main Page</a>
     </form>
 </div>
 </body>

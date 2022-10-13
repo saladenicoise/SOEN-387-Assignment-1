@@ -1,9 +1,76 @@
 span.success {
-    color: greenyellow;
+    color: #9a27dd;
     font-weight: bold;
 }
 
 span.fail {
-    color: red;
+    color: #d31f34;
     font-weight: bold;
+}
+
+.status-message {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.double-form-container {
+    max-width: 1200px;
+    display: grid;
+    margin: 35px auto;
+    width: fit-content;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 0.2fr;
+    gap: 10px;
+}
+
+
+body.main {
+    background-color: rgb(31, 211, 166);
+}
+
+h1 h2 h3 h4 h5 h6 {
+    color: white;
+}
+
+fieldset {
+    margin-right: 60%;
+}
+
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+.center-child {
+    position: absolute;
+    margin-top: 10%;
+}
+.button-center {
+    margin-top:3%;
+    text-align: center;
+}
+
+/* CSS */
+.button-1 {
+  background-color: #d31f34;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #df4759;
 }

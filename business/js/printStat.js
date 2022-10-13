@@ -73,4 +73,13 @@ function printStatus(status) {
     if (status === "removeCourseL") {
         this.statusBox.innerHTML = "<span class=\"fail\">Cannot remove course after semester ends</span>"
     }
+    if (status === "defP") {
+        this.statusBox.innerHTML = "<span class=\"fail\">You are using a default password. You must change it before continuing</span>"
+    }
+    if(status === "removeCourseIdF") {
+        this.statusBox.innerHTML = "<span class=\"fail\">ID not found!</span>"
+    }
+    if(status === "createStudentS") {
+        this.statusBox.innerHTML = "<span class=\"success\">Successfully Registered A New Student (Email Sent)</span>"
+    }
 }

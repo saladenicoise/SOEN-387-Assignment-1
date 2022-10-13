@@ -12,92 +12,67 @@ $statusVal = "";
 if ($statusSet) {
     $statusVal = $_GET['stat'];
 }
+
+$replaceLogin = 0;
+if(isset($_SESSION['login'])) {
+    $replaceLogin = 1;
+}
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../../styles/style.css?version=1">
-
+    <link rel="stylesheet" href="../../styles/style.css?v=1.1">
+    <link rel="stylesheet" href="../../styles/login.css?v=1.1">
+    <link rel="stylesheet" href="../../styles/navBarStyle.css?version=1.1">
     <title>Create Course</title>
-    <style>
-        body {
-        }
-
-        h2 {
-            font-family: arial, sans-serif;
-            color: blue
-        }
-
-        input {
-            background-color: white;
-            color: black;
-            font-weight: bold
-        }
-    </style>
     <script src="../../business/js/printStat.js"></script>
 </head>
 
 
 <?php
 if (!$statusSet) : ?>
-<body class="createCourse">
+<body class="login">
 <?php else : ?>
-<body class="createCourse" onload="printStatus('<?php echo $statusVal; ?>')">
+<body class="login" onload="printStatus('<?php echo $statusVal; ?>')">
 <?php endif; ?>
-
-<h2>Create Course</h2>
-<form method="post" action="../../data/courses/createCourseScript.php">
-    <div>
-        <p>Course Code
-            <label>
-                <input name="course_code" type="text" size="10" required/>
-            </label><br/></p>
-        <p>Course Title
-            <label>
-                <input name="title" type="text" size="40" required/>
-            </label>
-        </p><br/>
-        <p>Semester
-            <label for="semester"></label><select id="semester" name="semester" required>
-                <option value="Fall">Fall</option>
-                <option value="Winter">Winter</option>
-                <option value="Summer">Summer</option>
-            </select>
-        </p>
-
-        <p>Days of Course<br/>
-            <label for="days"></label><select id="days" name="days[]" size="5" multiple="multiple" required>
-                <option value="M">Monday</option>
-                <option value="T">Tuesday</option>
-                <option value="W">Wednesday</option>
-                <option value="R">Thursday</option>
-                <option value="F">Friday</option>
-            </select>
-        </p>
-        <br/>
-
-        <p>
-            Time
-            <label for="time"></label><input type="time" id="time" name="time" required>
-        </p>
-
-        <p>
-            Instructor
-            <label for="instructor"></label><input type="text" id="instructor" name="instructor" required>
-        </p>
-        <p>
-            Room
-            <label for="room"></label><input type="text" id="room" name="room" required>
-        </p>
-        <br/>
-        <input type="submit" value="Create Course"/>
+    <ul class="navi">
+        <li class="navBar"><a class="navbarElement" href="../../presentation/mainPage/mainPage.php">Main Page</a></li>
+        <?php
+        if($replaceLogin != 1) : ?>
+        <li class="navBar" style="float: right;"><a class="navbarElement" href="../../presentation/login/login.php">Login</a></li>
+        <?php else: ?>
+        <li class="navBar" style="float: right;"><a class="navbarElement" href="../../business/login/logoutScript.php">Logout</a></li>
+        <?php endif; ?>
+    </ul>
+    <div class="login-style-page">
+    <form method="post" action="../../data/courses/createCourseScript.php">
+        <h1>Create Course</h1>
+        <label for="course_code"></label><input id="course_code" name="course_code" type="text" size="10" pattern="([A-Z]{4})+(-){1}([0-9]){3,4}" placeholder="Course Code (TEXT-###)"required/>
+        <label for="title"></label><input id="title" name="title" type="text" size="40" required placeholder="Course Title"/>
+        <label for="semester"></label><select id="semester" name="semester" required>
+            <option value="" disabled selected>Semester</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+            <option value="Summer">Summer</option>
+        </select>
+        <label for="days"></label><select id="days" name="days[]" size="6" multiple="multiple" required>
+            <option value="" disabled selected>Days of Course</option>
+            <option value="M">Monday</option>
+            <option value="T">Tuesday</option>
+            <option value="W">Wednesday</option>
+            <option value="R">Thursday</option>
+            <option value="F">Friday</option>
+        </select>
+        <label for="time"></label><input type="time" id="time" name="time" value="08:45"required>
+        <label for="instructor"></label><input type="text" id="instructor" name="instructor" placeholder="Instructor" required>
+        <label for="room"></label><input type="text" id="room" name="room"  placeholder="Room" required>
         <p class="status-message" id='statusBox'></p>
-    </div>
-</form>
-<br>
-<hr>
-<button onclick="location.href='../../presentation/mainPage/mainPage.php'">Main Page</button>
+        <button class="sub-button" type="submit">Submit</button>
+        <button class="res-button" type="reset">Reset</button>
+        <br>
+    </form>
+</div>
 </body>
 </html>
