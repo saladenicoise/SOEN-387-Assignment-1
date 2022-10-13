@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { //If we're admin, redirect to main page
     require_once('../../config/config.php');
-    header("Location: " . PATH_MAIN_PAGE . "?stat=notL");
+    header("Location: " . PATH_MAIN_PAGE . "?stat=notS");
     exit();
 }
 

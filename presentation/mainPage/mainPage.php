@@ -25,7 +25,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] != 0) { // Checks if Session
     <link rel="stylesheet" href="../../styles/style.css?version=1">
     <script src="../../business/js/printStat.js"></script>
     <script src="../../business/js/signup.js"></script>
-    <title>Temp Logged in Page</title>
+    <title>Welcome, You are Logged In</title>
 </head>
 
 <?php
@@ -34,15 +34,16 @@ if(!$statusSet) : ?>
 <?php else : ?>
     <body onload="printStatus('<?php echo $statusVal;?>')">
 <?php endif; ?>
-<p>Temp Home Page</p>
+<p>Welcome, You are Logged In</p>
 <p class="status-message" id='statusBox'></p>
-<button onclick="location.href='../../presentation/login/login.php'">Login Page</button>
-<button onclick="location.href='../../presentation/login/changePassword.php'">Change Password Page</button>
+<button onclick="location.href='../../presentation/login/changePassword.php'">Change Password</button>
+<button onclick="location.href='../../business/login/logoutScript.php'">Logout</button>
+<br><br>
 <button onclick="location.href='../courses/createCourse.php'">Create Course (Admin)</button>
+<button onclick="location.href='../../presentation/reportGeneration/report.php'">Generate Reports (Admin)</button>
+<br><br>
 <button onclick="location.href='../courses/addCourse.php'">Add Course (Student)</button>
 <button onclick="location.href='../courses/removeCourse.php'">Remove Course (Student)</button>
-<button onclick="location.href='../../business/login/logoutScript.php'">Logout</button>
-<button onclick="location.href='../../presentation/reportGeneration/report.php'">Report Generation Page (Admin)</button>
 </body>
 
 </html>
