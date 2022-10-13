@@ -14,7 +14,10 @@ function printStatus(status) {
         this.statusBox.innerHTML = "<span class=\"fail\">Username or Password is Invalid</span>";
     }
     if (status === "notA") { //Not Admin
-        this.statusBox.innerHTML = "<span class=\"fail\">You are not admin</span>";
+        this.statusBox.innerHTML = "<span class=\"fail\">You are not an admin</span>";
+    }
+    if (status === "notS") { //Not Student
+        this.statusBox.innerHTML = "<span class=\"fail\">You are not a student</span>";
     }
     if (status === "notL") { //Not Logged In
         this.statusBox.innerHTML = "<span class=\"fail\">You are not logged in</span>";
