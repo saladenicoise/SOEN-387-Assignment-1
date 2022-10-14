@@ -39,12 +39,6 @@ CREATE TABLE `administrator` (
   `date_of_birth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `administrator`
---
-
-INSERT INTO `administrator` (`employment_id`, `first_name`, `last_name`, `address`, `email`, `phone_number`, `date_of_birth`) VALUES
-(12345678, 'Test', 'Admin', 'Test Admin Street', 'test@test.com', '111-222-3333', '1554-09-18');
 
 -- --------------------------------------------------------
 
@@ -64,15 +58,6 @@ CREATE TABLE `course` (
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `course`
---
-
-INSERT INTO `course` (`course_code`, `title`, `semester`, `days`, `time`, `instructor`, `room`, `start_date`, `end_date`) VALUES
-('COMP-248', 'Java OOP 1', 'Fall', 'MW', '08:45:00', 'Steve', 'H-908', '2022-09-06', '2022-12-22'),
-('COMP-249', 'Java OOP 2', 'Winter', 'TR', '08:45:00', 'Stevei', 'H-678', '2023-01-09', '2023-05-02'),
-('SOEN-287', 'Web Programming 1', 'Fall', 'WF', '11:45:00', 'Yui', 'H-789', '2022-09-06', '2022-12-22'),
-('SOEN-387', 'Web Programming 2', 'Summer', 'T', '17:45:00', 'Po Tato', 'H-666', '2023-05-03', '2023-08-10');
 
 -- --------------------------------------------------------
 
@@ -85,13 +70,6 @@ CREATE TABLE `registrar` (
   `course_code` varchar(15) NOT NULL,
   `semester` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `registrar`
---
-
-INSERT INTO `registrar` (`id`, `course_code`, `semester`) VALUES
-(98765432, 'COMP-248', 'Fall');
 
 -- --------------------------------------------------------
 
@@ -109,14 +87,6 @@ CREATE TABLE `student` (
   `date_of_birth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`id`, `first_name`, `last_name`, `address`, `email`, `phone_number`, `date_of_birth`) VALUES
-(12345678, 'Test', 'Student2', 'Tuy', 'testStudent@test.com', '999-999-7895', '2022-10-13'),
-(98765432, 'Test', 'Student', 'Test Student Street', 'happygero7@gmail.com', '222-333-4444', '1648-08-14');
-
 -- --------------------------------------------------------
 
 --
@@ -130,14 +100,6 @@ CREATE TABLE `useraccounts` (
   `is_admin` int(11) NOT NULL,
   `default_password` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `useraccounts`
---
-
-INSERT INTO `useraccounts` (`username`, `password`, `email`, `is_admin`, `default_password`) VALUES
-('testAdmin', '$2y$12$dTeOjGjZy3O1q8YUaejCL.9XgUcCmakbXTfI64V5Tz7SurwmDBaEW', 'test@test.com', 1, 0),
-('testStudent', '$2y$12$emFKhB9R7cLGeOYQRUQQQufh04.O5mbs68dbPax2DGEsCOxu4JgYW', 'happygero7@gmail.com', 0, 0);
 
 --
 -- Indexes for dumped tables
