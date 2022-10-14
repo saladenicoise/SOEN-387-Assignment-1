@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $SQL->execute();
             $SQL->close();
             $conn->close();
-            header("Location: ".PATH_LOGIN."?stat=removeCourseS");
+            header("Location: ".PATH_REMOVE_COURSE."?stat=removeCourseS");
         }
     }
     else {
