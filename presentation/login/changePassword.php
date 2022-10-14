@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $statusSet = isset($_GET['stat']);
 $statusVal = "";
 if($statusSet) {
@@ -10,6 +12,12 @@ $emailVal = "";
 if($emailB64) {
     $emailVal = base64_decode($_GET['email']);
 }
+
+if (isset($_SESSION["admin"]) && $_SESSION["admin"] != 0) { //If we're admin, redirect to main page
+    require_once('../../config/config.php');
+    header("Location: " . PATH_MAIN_PAGE . "?stat=notS");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +26,7 @@ if($emailB64) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/style.css?version=1">
+    <link rel="stylesheet" href="../../styles/style.css?v=1.1">
     <link rel="stylesheet" href="../../styles/login.css">
     <title>Change User Default Password</title>
     <script src="../../business/js/signup.js"></script>
@@ -45,7 +53,7 @@ if(!$statusSet) : ?>
         <button class="res-button" type="reset">Reset</button>
         <input type="hidden" id="email" name="email" value='<?php echo "$emailVal";?>'>
         <br>
-        <a class="link" href="../../index.html">Main Page</a>
+        <a class="link" href="../../presentation/mainPage/mainPage.php">Main Page</a>
     </form>
 </div>
 </body>

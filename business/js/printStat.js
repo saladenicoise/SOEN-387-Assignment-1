@@ -1,6 +1,10 @@
 function printStatus(status) {
     this.statusBox = document.getElementById('statusBox');
+    this.reportStatusBox = document.getElementById('statusBox-stc')
     console.log("Should be printing status of: " + status);
+    if (this.statusBox === null && status === "addCourseES") {
+        this.reportStatusBox.innerHTML = "<span class=\"fail\">Student does not exist</span>"
+    }
     if (status === "signupU") { //Signup Username already taken
         this.statusBox.innerHTML = "<span class=\"fail\">Username Already Taken</span>";
     }
@@ -72,5 +76,14 @@ function printStatus(status) {
     }
     if (status === "removeCourseL") {
         this.statusBox.innerHTML = "<span class=\"fail\">Cannot remove course after semester ends</span>"
+    }
+    if (status === "defP") {
+        this.statusBox.innerHTML = "<span class=\"fail\">You are using a default password. You must change it before continuing</span>"
+    }
+    if(status === "removeCourseIdF") {
+        this.statusBox.innerHTML = "<span class=\"fail\">ID not found!</span>"
+    }
+    if(status === "createStudentS") {
+        this.statusBox.innerHTML = "<span class=\"success\">Successfully Registered A New Student (Email Sent)</span>"
     }
 }

@@ -30,21 +30,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $SQL = $conn->prepare("SELECT default_password, email FROM `useraccounts` WHERE username=?");
         $SQL->bind_param('s', $uname);
         $SQL->execute();
-        $SQL->store_result();
-        $isDefault = 0;
-        $email = "";
-        $SQL->bind_result($isDefault, $email);
-        if($isDefault === 1) {
-            header("Location: ".PATH_CHANGE_PW."?email=". base64_encode($email));
+        $result = $SQL->get_result();
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $SQL->close();
+        if($row['default_password'] === 1) {
+            header("Location: ".PATH_CHANGE_PW."?email=". base64_encode($row['email'])."&stat=defP");
             exit();
         }
-        $stmt = $conn->prepare("SELECT password, is_admin FROM `useraccounts` WHERE username=?");
+        $stmt = $conn->prepare("SELECT password, is_admin, default_password FROM `useraccounts` WHERE username=?");
         $stmt->bind_param('s', $uname);
         $stmt->execute();
         $stmt->store_result();
         $hash = "";
         $isAdmin = 0;
-        $stmt->bind_result($hash, $isAdmin); //Gets the hash of the password, never the ACTUAL PASSWORD!!!!
+        $stmt->bind_result($hash, $isAdmin, $isDefault); //Gets the hash of the password, never the ACTUAL PASSWORD!!!!
         $fetchRes = $stmt->fetch();
         $stmt->close();
         if (password_verify($pword, $hash) && $fetchRes) { //Does the password match the hash of the password

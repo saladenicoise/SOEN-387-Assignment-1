@@ -1,7 +1,7 @@
 /*Not pure white, nicer on the eyes*/
 
 body.login {
-    background-color: #52b1b8;
+    background-color: rgb(31, 211, 166);
 }
 
 
@@ -10,6 +10,12 @@ body.login {
 div.login-page {
     width: 360px;
     padding: 8% 0 0;
+    margin: auto;
+}
+
+div.login-style-page {
+    width: 360px; 
+    padding: 3% 0 15px 0;
     margin: auto;
 }
 
@@ -44,6 +50,20 @@ form input {
     font-size: 14px;
 }
 
+form select {
+    background-color: #f0f0f0;
+    width: 100%;
+    /*Remove border to make it cleaner and blend in*/
+    border: 0;
+    /*15px Margin bottom for spacing between fields*/
+    margin-bottom: 15px;
+    /*15px of padding on all sides, makes the fields bigger*/
+    padding: 15px;
+    /*Will make it fit to the input size*/
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
 form input:disabled {
     background-color: #c4c4c4;
 }
@@ -62,7 +82,6 @@ form button {
 form button:disabled {
     background-color: #173133;
 }
-
 
 /*Change opacity on hover*/
 

@@ -1,0 +1,41 @@
+/*css for the navigation bar
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+.navi {
+    list-style-type: none;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    height: auto;
+    overflow: hidden;
+    background-color: #585858;
+    position: sticky;
+    z-index: 1;
+}
+
+.navBar {
+    float: left;
+    z-index: 1;
+}
+
+
+.navbarElement {
+    display: block;
+    padding: 18px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    z-index: 1;
+}
+
+.navbarElement:hover {
+    background-color: #777777;
+}
