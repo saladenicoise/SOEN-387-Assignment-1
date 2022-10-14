@@ -50,7 +50,7 @@ if (!$statusSet) : ?>
     <div class="login-style-page">
     <form method="post" action="../../data/courses/removeCourseScript.php">
         <h2>Remove Course</h2>
-        <input id="id" name="id" type="number" min="8" size="10" placeholder="Student ID" onblur="idValidator()" required/>
+        <label for="id"></label><input id="id" name="id" type="number" min="8" size="10" placeholder="Student ID" onblur="idValidator()" required/>
         <label for="semester"></label><select id="semester" name="semester" required>
             <option value="1" disabled selected>Semester</option>
             <option value="Fall">Fall</option>
@@ -62,6 +62,7 @@ if (!$statusSet) : ?>
         <button class="sub-button" type="submit">Submit</button>
         <button class="res-button" type="reset">Reset</button>
         <br> <!-- Padding -->
+    </form>
     </div>
 </body>
 </html>

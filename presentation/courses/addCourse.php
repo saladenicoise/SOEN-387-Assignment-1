@@ -53,7 +53,7 @@ if (!$statusSet) : ?>
     <form method="post" action="../../data/courses/addCourseScript.php">
         <h2>Add Course</h2>
         <input id="id" name="id" type="text" min="8" size="10" placeholder="Student ID" required/>
-        <label for="id"></label><select id="courses" name="courses" required>
+        <label for="id"></label><label for="courses"></label><select id="courses" name="courses" required>
             <option value="" disabled selected>Course</option>
             <?php
                 $courseList = getAllCourses(); //Returns a list of all the courses currently found in the database
@@ -66,7 +66,7 @@ if (!$statusSet) : ?>
         <button class="sub-button" type="submit">Submit</button>
         <button class="res-button" type="reset">Reset</button>
         <br> <!-- Padding -->
+    </form>
     </div>
-</form>
 </body>
 </html>
