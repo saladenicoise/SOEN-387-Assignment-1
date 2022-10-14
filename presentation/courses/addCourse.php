@@ -52,7 +52,7 @@ if (!$statusSet) : ?>
     <div class="login-style-page">
     <form method="post" action="../../data/courses/addCourseScript.php">
         <h2>Add Course</h2>
-        <input id="id" name="id" type="number" min="8" size="10" placeholder="Student ID" required/>
+        <input id="id" name="id" type="text" min="8" size="10" placeholder="Student ID" required/>
         <label for="id"></label><select id="courses" name="courses" required>
             <option value="" disabled selected>Course</option>
             <?php
@@ -61,12 +61,6 @@ if (!$statusSet) : ?>
                     echo "<option value='" . $course . "'>" . $course . "</option>";
                 }
             ?>
-        </select>
-        <label for="semester"></label><select id="semester" name="semester" required>
-            <option value="" disabled selected>Semester</option>
-            <option value="Fall">Fall</option>
-            <option value="Winter">Winter</option>
-            <option value="Summer">Summer</option>
         </select>
         <p class="status-message" id='statusBox'></p>
         <button class="sub-button" type="submit">Submit</button>
