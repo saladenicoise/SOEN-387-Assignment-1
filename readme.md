@@ -1,10 +1,6 @@
 # SOEN 387 A1
 This is the code to our website to fulfill the requirements for SOEN 387 Assignment #1
 
-<<<<<<< Updated upstream
-## Index.html
-This is the main index page, the page that does not require user authentication. If the user attempts to access the main page without being logged in, they will be redirected to the login page
-=======
 # Sitemap
 The code is structured into 6 folders
 
@@ -50,5 +46,4 @@ The presentation folder contains all the `.php` files that have HTML code within
 
 ## Styles
 The styles folder contains all the `.css` files for the website. The file names represent what data they hold and which files it is relevant to.
->>>>>>> Stashed changes
 

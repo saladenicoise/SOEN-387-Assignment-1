@@ -9,7 +9,7 @@
 
         if($conn)
         {
-            $SQL = $conn->prepare("SELECT course_code, title, semester FROM `course`"); //Ensure user actually exists
+            $SQL = $conn->prepare("SELECT course_code, title, semester FROM `course`");
             $SQL->execute();
             $courseArray = array();
             $result = $SQL->get_result(); //mysqli_result object

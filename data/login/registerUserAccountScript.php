@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $to = $email;
                 $subject = "Password Change Request";
                 mail($to,$subject,$mailMessage,$headers);
-                header("Location: ".PATH_CHANGE_PW."?email=" . base64_encode($email));
+                header("Location: ".PATH_MAIN_PAGE."?stat=createStudentS");
             }
         }
     } else {

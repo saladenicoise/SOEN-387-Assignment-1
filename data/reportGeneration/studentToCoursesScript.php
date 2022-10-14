@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $date = date('d-m-y-s');
     
     $id = test_input($_POST["sid"]);
-    
     $file = "report_courseList". $date . "-". $id . ".txt";
     $txt = fopen($file, "w") or die("Unable to generate report file!");
     fwrite($txt, "Student with ID " . $id . " is registered for the following courses:\n");
@@ -20,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $SQL->bind_param("s", $id);
     $SQL->execute();
     $result = $SQL->get_result(); //mysqli_result object
-    $resultNum = $SQL->num_rows;
+    $arr = $result->fetch_all(MYSQLI_ASSOC);
     $SQL->close();
 
-    if($resultNum <= 0) { //Id does not exist
+    if(count($arr) <= 0) { //Id does not exist
         fclose($txt);
         $conn->close();
         unlink($file);
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) { //For every course
+    foreach ($arr as $row) {
         $SQL = $conn->prepare("SELECT * FROM `course` WHERE course_code=? AND semester=?");
         $SQL->bind_param("ss", $row["course_code"], $row["semester"]);
         $SQL->execute();
@@ -42,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     fclose($txt);
     $conn->close();
-
     // Downloads Report File
     header('Content-Description: File Transfer');
     header('Content-Disposition: attachment; filename='.basename($file));
