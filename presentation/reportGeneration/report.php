@@ -55,7 +55,7 @@ if(!$statusSet) : ?>
             <form name="courseToStudentsForm" method="POST" action="../../data/reportGeneration/courseToStudentsScript.php">
                 <h2>All students taking a specified class</h2>
                 <p>Will auto-download a file upon report generation completion</p>
-                <p class="status-message" id='statusBox'></p>
+                <p class="status-message" id='statusBox-cts'></p>
                 <label for="courses">Course:</label>
                 <select id="courses" name="courses" required>
                     <?php
@@ -73,7 +73,7 @@ if(!$statusSet) : ?>
             <form name="studentToCoursesForm" method="POST" action="../../data/reportGeneration/studentToCoursesScript.php">
                 <h2> All courses taken by a student</h2>
                 <p>Will auto-download a file upon report generation completion</p>
-                <p class="status-message" id='statusBox'></p>
+                <p class="status-message" id='statusBox-stc'></p>
                 <label for="sid">Student ID: </label><input id="sid" TYPE='text' Name='sid' placeholder="Student ID" required>
                 <br><br>
                 <button type="submit">Generate Report</button>

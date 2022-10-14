@@ -1,6 +1,10 @@
 function printStatus(status) {
     this.statusBox = document.getElementById('statusBox');
+    this.reportStatusBox = document.getElementById('statusBox-stc')
     console.log("Should be printing status of: " + status);
+    if (this.statusBox === null && status === "addCourseES") {
+        this.reportStatusBox.innerHTML = "<span class=\"fail\">Student does not exist</span>"
+    }
     if (status === "signupU") { //Signup Username already taken
         this.statusBox.innerHTML = "<span class=\"fail\">Username Already Taken</span>";
     }
